@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fayl Yuklash Animatsiyasi</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+
+  <div class="upload-card">
+    <h3>Faylni yuklash</h3>
+    <br>
+    <button class="upload-btn" onclick="startUpload()">Faylni tanlang va yuklang</button>
+
+    <div class="loader-container" id="loader">
+      <!-- Yugurayotgan odam -->
+      <div class="runner-wrapper" id="runnerWrapper">
+        <div class="runner">
+          <div class="head"></div>
+          <div class="body-line"></div>
+          <div class="limb arm-left"></div>
+          <div class="limb arm-right"></div>
+          <div class="limb leg-left"></div>
+          <div class="limb leg-right"></div>
+        </div>
+      </div>
+
+      <!-- Progressive chiziq -->
+      <div class="track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="status-text" id="statusText">Yuklanmoqda... 0%</div>
+    </div>
+  </div>
+
+  <script>
+    function startUpload() {
+      const loader = document.getElementById('loader');
+      const progressBar = document.getElementById('progressBar');
+      const runnerWrapper = document.getElementById('runnerWrapper');
+      const statusText = document.getElementById('statusText');
+      
+      loader.classList.add('active');
+      
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 2;
+        
+        progressBar.style.width = progress + '%';
+        runnerWrapper.style.left = progress + '%';
+        statusText.innerText = `Yuklanmoqda... ${progress}%`;
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          statusText.innerText = "Yuklash yakunlandi! ✅";
+        }
+      }, 60);
+    }
+  </script>
+
+</body>
+</html>

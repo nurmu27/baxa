@@ -1,0 +1,157 @@
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f4f8;
+    }
+
+    .upload-card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    .upload-btn {
+      background-color: #4f46e5;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .upload-btn:hover {
+      background-color: #4338ca;
+    }
+
+    /* Animatsiya konteyneri */
+    .loader-container {
+      display: none;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .loader-container.active {
+      display: block;
+    }
+
+    /* Yugurish yo'li */
+    .track {
+      width: 100%;
+      height: 4px;
+      background-color: #e2e8f0;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #4f46e5;
+      transition: width 0.1s linear;
+    }
+
+    /* Yugurayotgan odam (Stickman) */
+    .runner-wrapper {
+      position: absolute;
+      top: -35px;
+      left: 0%;
+      transform: translateX(-50%);
+      transition: left 0.1s linear;
+    }
+
+    .runner {
+      width: 30px;
+      height: 35px;
+      position: relative;
+    }
+
+    /* Bosh */
+    .head {
+      width: 10px;
+      height: 10px;
+      background: #333;
+      border-radius: 50%;
+      position: absolute;
+      left: 10px;
+      top: 0;
+    }
+
+    /* Tana */
+    .body-line {
+      width: 2px;
+      height: 12px;
+      background: #333;
+      position: absolute;
+      left: 14px;
+      top: 10px;
+      transform: rotate(15deg);
+    }
+
+    /* Qo'llar va oyoqlar animatsiyasi */
+    .limb {
+      position: absolute;
+      width: 2px;
+      background: #333;
+      transform-origin: top center;
+    }
+
+    .arm-left {
+      height: 10px;
+      left: 14px;
+      top: 11px;
+      animation: run-arm 0.4s infinite alternate ease-in-out;
+    }
+
+    .arm-right {
+      height: 10px;
+      left: 14px;
+      top: 11px;
+      animation: run-arm 0.4s infinite alternate-reverse ease-in-out;
+    }
+
+    .leg-left {
+      height: 12px;
+      left: 14px;
+      top: 21px;
+      animation: run-leg 0.4s infinite alternate ease-in-out;
+    }
+
+    .leg-right {
+      height: 12px;
+      left: 14px;
+      top: 21px;
+      animation: run-leg 0.4s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes run-arm {
+      0% { transform: rotate(-45deg); }
+      100% { transform: rotate(45deg); }
+    }
+
+    @keyframes run-leg {
+      0% { transform: rotate(50deg); }
+      100% { transform: rotate(-50deg); }
+    }
+
+    .status-text {
+      font-size: 14px;
+      color: #64748b;
+      margin-top: 10px;
+    }

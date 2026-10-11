@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f0e8">
+  <meta name="description" content="Авторское портфолио рисунков, скетчей, акварели и дизайна.">
+  <title>Artist Portfolio — Мои работы</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <a href="#home" class="logo">moxi<span>.</span>dii</a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Открыть меню" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="#home">Главная</a>
+      <a href="#works">Мои работы</a>
+      <a href="#about">Обо мне</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">МОЁ ТВОРЧЕСКОЕ ПРОСТРАНСТВО</p>
+        <h1>Искусство<br>в каждой <em>линии.</em></h1>
+        <p class="hero-text">
+          Рисунки, идеи и маленькие истории,
+          созданные карандашом, тушью и акварелью.
+        </p>
+        <a href="#works" class="primary-button">
+          Смотреть мои работы <span>↗</span>
+        </a>
+        <p class="hero-note">СКЕТЧИ · ИЛЛЮСТРАЦИИ · ДИЗАЙН</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-frame">
+          <img src="amg/photo_2026-10-11_17-02-37.jpg" alt="">
+               "Велики человек"
+          <span class="frame-label">№ 01 — A little countryside</span>
+        </div>
+        <span class="decor decor-one">✳</span>
+        <span class="decor decor-two">art is everywhere</span>
+      </div>
+    </section>
+
+    <section class="works section" id="works">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"></p>
+          <h2>Избранные работы<span>.</span></h2>
+        </div>
+        <p class="section-description">
+          Каждая работа — отдельное настроение,
+          наблюдение или идея.
+        </p>
+      </div>
+
+      <div class="filters" aria-label="Фильтр работ">
+        <button class="filter active" data-filter="all">Все работы</button>
+        <button class="filter" data-filter="sketch">Скетчи</button>
+        <button class="filter" data-filter="painting">Акварель</button>
+        <button class="filter" data-filter="design">Дизайн</button>
+      </div>
+
+      <div class="gallery">
+        <article class="art-card tall" data-category="sketch">
+          <button class="art-image" data-image="images/architecture.jpg"
+                  data-title="Графический рисунок архитектурных башен">
+            <img src="amg/photo_1_2026-10-11_16-51-52.jpg"
+                 alt="Графический рисунок архитектурных башен" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Архитектурные детали</h3><p>Тушь и перо</p></div>
+            <span class="art-number">01</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="painting">
+          <button class="art-image" data-image="images/landscape.jpg"
+                  data-title="Тихая деревня">
+            <img src="amg/photo_2_2026-10-11_16-51-52.jpg"
+                 alt="Зелёный пейзаж с деревенской дорогой" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Тихая деревня</h3><p>Акварель</p></div>
+            <span class="art-number">02</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="design">
+          <button class="art-image" data-image="images/product.jpg"
+                  data-title="Предметный дизайн">
+            <img src="amg/photo_3_2026-10-11_16-51-52.jpg"
+                 alt="Концептуальный рисунок механизма" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Предметный дизайн</h3><p>Концепт и перспектива</p></div>
+            <span class="art-number">03</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="sketch">
+          <button class="art-image" data-image="images/character.jpg"
+                  data-title="движении механизма">
+            <img src="amg/photo_4_2026-10-11_16-51-52.jpg"
+                 alt="Концептуальный рисунок механизма" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Персонаж в движении</h3><p>Чёрная тушь</p></div>
+            <span class="art-number">04</span>
+          </div>
+        </article>
+
+        <article class="art-card tall" data-category="sketch">
+          <button class="art-image" data-image="images/asian-house.jpg"
+                  data-title="Архитектура Востока">
+            <img src="amg/photo_5_2026-10-11_16-51-52.jpg"
+                 alt="Ой Ой" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Архитектура Востока</h3><p>Карандаш и штриховка</p></div>
+            <span class="art-number">05</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="sketch">
+          <button class="art-image" data-image="images/sketch.jpg"
+                  data-title="Механические идеи">
+            <img src="amg/photo_6_2026-10-11_16-51-52.jpg"
+                 alt="Страница с много этажнова дома" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Механические идеи</h3><p>Технический скетч</p></div>
+            <span class="art-number">06</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="sketch">
+          <button class="art-image" data-image="images/dancer.jpg"
+                  data-title="Движение">
+            <img src="amg/photo_7_2026-10-11_16-51-52.jpg"
+                 alt="Динамичный рисунок танцующего человека" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Движение</h3><p>Фигура и жест</p></div>
+            <span class="art-number">07</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="design">
+          <button class="art-image" data-image="images/pencils.jpg"
+                  data-title="Инструменты художника">
+            <img src="amg/photo_8_2026-10-11_16-51-52.jpg"
+                 alt="Рисунки карандашей в перспективе" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Инструменты художника</h3><p>Форма и объём</p></div>
+            <span class="art-number">08</span>
+          </div>
+        </article>
+
+        <article class="art-card" data-category="painting">
+          <button class="art-image" data-image="images/watercolor.jpg"
+                  data-title="Цвет и традиции">
+            <img src="amg/photo_9_2026-10-11_16-51-52.jpg"
+                 alt="Яркая иллюстрация традиционной одежды и палитры" loading="lazy">
+            <span class="image-overlay">Посмотреть ↗</span>
+          </button>
+          <div class="art-info">
+            <div><h3>Цвет и традиции</h3><p>Цветная иллюстрация</p></div>
+            <span class="art-number">09</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="about-mark">✳</div>
+      <div>
+        <p class="eyebrow">НЕМНОГО ОБО МНЕ</p>
+        <h2>Наблюдать.<br><em>Чувствовать.</em><br>Создавать.</h2>
+      </div>
+      <div class="about-copy">
+        <p>
+          Я исследую мир через рисунок: изучаю форму,
+          архитектуру и движение. Мне нравится
+          рисовать
+        </p>
+        <p>
+          Здесь собраны мои эксперименты с линией,
+          тенью и цветом — шаг за шагом, лист за листом.
+        </p>
+        <a class="text-link" href="#contact">Давай общаться ↗</a>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <p class="eyebrow">ЕСТЬ ИДЕЯ?</p>
+      <h2>Давай создадим<br><em>что-то прекрасное.</em></h2>
+      <p>Буду рад(а) новым идеям, творческим проектам и знакомствам.</p>
+      <a class="primary-button" href="mailto:hello@example.com">
+        Написать мне <span>↗</span>
+      </a>
+      <p class="contact-hint">
+        Замени hello@example.com на свой адрес электронной почты.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#home" class="logo">moxi<span>.</span>dii</a>
+    <p>Создано с любовью к искусству © <span id="year"></span></p>
+    <a href="#home" class="back-top">Наверх ↑</a>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose"
+            aria-label="Закрыть">×</button>
+    <img id="lightboxImage" src="" alt="">
+    <p id="lightboxTitle"></p>
+  </dialog>
+
+</body>
+</html>

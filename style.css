@@ -1,157 +1,605 @@
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #f0f4f8;
-    }
+:root {
+  --paper: #f5f0e8;
+  --paper-dark: #e9dfd1;
+  --ink: #29251f;
+  --muted: #777166;
+  --accent: #a45d43;
+  --line: #d8cfc2;
+  --white: #fffdf9;
+}
 
-    .upload-card {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      width: 320px;
-      text-align: center;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .upload-btn {
-      background-color: #4f46e5;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
 
-    .upload-btn:hover {
-      background-color: #4338ca;
-    }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
+}
 
-    /* Animatsiya konteyneri */
-    .loader-container {
-      display: none;
-      margin-top: 20px;
-      position: relative;
-    }
+body, button, a {
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .loader-container.active {
-      display: block;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    /* Yugurish yo'li */
-    .track {
-      width: 100%;
-      height: 4px;
-      background-color: #e2e8f0;
-      border-radius: 2px;
-      position: relative;
-      overflow: hidden;
-      margin-top: 10px;
-    }
+button {
+  font: inherit;
+}
 
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      background-color: #4f46e5;
-      transition: width 0.1s linear;
-    }
+img {
+  display: block;
+  width: 100%;
+}
 
-    /* Yugurayotgan odam (Stickman) */
-    .runner-wrapper {
-      position: absolute;
-      top: -35px;
-      left: 0%;
-      transform: translateX(-50%);
-      transition: left 0.1s linear;
-    }
+.header {
+  min-height: 82px;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(245, 240, 232, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
 
-    .runner {
-      width: 30px;
-      height: 35px;
-      position: relative;
-    }
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
 
-    /* Bosh */
-    .head {
-      width: 10px;
-      height: 10px;
-      background: #333;
-      border-radius: 50%;
-      position: absolute;
-      left: 10px;
-      top: 0;
-    }
+.logo span,
+.section-heading h2 span {
+  color: var(--accent);
+}
 
-    /* Tana */
-    .body-line {
-      width: 2px;
-      height: 12px;
-      background: #333;
-      position: absolute;
-      left: 14px;
-      top: 10px;
-      transform: rotate(15deg);
-    }
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
 
-    /* Qo'llar va oyoqlar animatsiyasi */
-    .limb {
-      position: absolute;
-      width: 2px;
-      background: #333;
-      transform-origin: top center;
-    }
+.nav a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.25s;
+}
 
-    .arm-left {
-      height: 10px;
-      left: 14px;
-      top: 11px;
-      animation: run-arm 0.4s infinite alternate ease-in-out;
-    }
+.nav a:hover {
+  color: var(--accent);
+}
 
-    .arm-right {
-      height: 10px;
-      left: 14px;
-      top: 11px;
-      animation: run-arm 0.4s infinite alternate-reverse ease-in-out;
-    }
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  font-size: 25px;
+  cursor: pointer;
+}
 
-    .leg-left {
-      height: 12px;
-      left: 14px;
-      top: 21px;
-      animation: run-leg 0.4s infinite alternate ease-in-out;
-    }
+.hero {
+  min-height: 620px;
+  padding: 90px 9% 100px;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 65px;
+  align-items: center;
+  overflow: hidden;
+}
 
-    .leg-right {
-      height: 12px;
-      left: 14px;
-      top: 21px;
-      animation: run-leg 0.4s infinite alternate-reverse ease-in-out;
-    }
+.eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  margin-bottom: 20px;
+}
 
-    @keyframes run-arm {
-      0% { transform: rotate(-45deg); }
-      100% { transform: rotate(45deg); }
-    }
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  letter-spacing: -1.8px;
+  line-height: 1.12;
+}
 
-    @keyframes run-leg {
-      0% { transform: rotate(50deg); }
-      100% { transform: rotate(-50deg); }
-    }
+.hero h1 {
+  font-size: clamp(48px, 6vw, 78px);
+}
 
-    .status-text {
-      font-size: 14px;
-      color: #64748b;
-      margin-top: 10px;
-    }
+h1 em, h2 em {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.hero-text {
+  max-width: 400px;
+  margin: 25px 0 30px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding: 15px 23px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 12px;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.primary-button:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+}
+
+.primary-button span {
+  font-size: 17px;
+}
+
+.hero-note {
+  margin-top: 35px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.hero-art {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  justify-self: center;
+}
+
+.hero-frame {
+  background: var(--white);
+  padding: 12px 12px 35px;
+  transform: rotate(3deg);
+  box-shadow: 0 20px 50px #51433115;
+}
+
+.hero-frame img {
+  height: 410px;
+  object-fit: cover;
+}
+
+.frame-label {
+  position: absolute;
+  bottom: 8px;
+  left: 14px;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.decor {
+  position: absolute;
+  color: var(--accent);
+}
+
+.decor-one {
+  top: -40px;
+  right: -28px;
+  font-size: 55px;
+}
+
+.decor-two {
+  bottom: 10px;
+  right: -50px;
+  transform: rotate(-8deg);
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.section {
+  padding: 100px 9%;
+}
+
+.works {
+  background: var(--white);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.section-heading h2,
+.about h2,
+.contact h2 {
+  font-size: clamp(36px, 4.5vw, 55px);
+}
+
+.section-description {
+  max-width: 280px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.filter {
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.25s;
+}
+
+.filter:hover,
+.filter.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 42px 25px;
+  align-items: start;
+}
+
+.art-card {
+  min-width: 0;
+  animation: appear 0.5s ease both;
+}
+
+.art-card.hidden {
+  display: none;
+}
+
+.art-image {
+  width: 100%;
+  height: 290px;
+  border: none;
+  background: var(--paper-dark);
+  position: relative;
+  display: block;
+  overflow: hidden;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.art-card.tall .art-image {
+  height: 380px;
+}
+
+.art-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.art-image:hover img {
+  transform: scale(1.045);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #211b16a6;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+}
+
+.art-image:hover .image-overlay,
+.art-image:focus-visible .image-overlay {
+  opacity: 1;
+}
+
+.art-info {
+  padding-top: 15px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.art-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.art-info p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.art-number {
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-mark {
+  color: var(--accent);
+  font-size: 65px;
+  align-self: start;
+}
+
+.about-copy {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.about-copy p + p {
+  margin-top: 17px;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 24px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.contact {
+  background: var(--paper-dark);
+  text-align: center;
+}
+
+.contact h2 {
+  margin-bottom: 22px;
+}
+
+.contact > p:not(.eyebrow):not(.contact-hint) {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 27px;
+}
+
+.contact-hint {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer {
+  min-height: 90px;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer p,
+.back-top {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.back-top:hover {
+  color: var(--accent);
+}
+
+.lightbox {
+  width: min(90vw, 900px);
+  max-width: none;
+  max-height: 90vh;
+  margin: auto;
+  padding: 20px;
+  border: none;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 20px 80px #0004;
+}
+
+.lightbox::backdrop {
+  background: #17130fe8;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox img {
+  max-height: 75vh;
+  width: 100%;
+  object-fit: contain;
+}
+
+.lightbox p {
+  margin-top: 12px;
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+}
+
+.lightbox-close {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 10px;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    gap: 35px;
+    padding: 75px 6%;
+  }
+
+  .hero-frame img {
+    height: 330px;
+  }
+
+  .section {
+    padding: 75px 6%;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about {
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 25px;
+  }
+
+  .about-mark {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    min-height: 70px;
+    padding: 14px 6%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 69px;
+    left: 0;
+    right: 0;
+    padding: 22px 6%;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 65px 7% 75px;
+    gap: 55px;
+  }
+
+  .hero h1 {
+    font-size: 55px;
+  }
+
+  .hero-art {
+    max-width: 350px;
+  }
+
+  .hero-frame img {
+    height: 340px;
+  }
+
+  .decor-two {
+    right: -15px;
+  }
+
+  .section {
+    padding: 65px 6%;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .art-image,
+  .art-card.tall .art-image {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-mark {
+    font-size: 40px;
+  }
+
+  .about h2,
+  .contact h2 {
+    font-size: 42px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    padding: 25px 6%;
+  }
+
+  .footer p {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
